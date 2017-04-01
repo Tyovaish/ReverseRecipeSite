@@ -9,24 +9,26 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   </head>
   <body>
-    
-    <div class="pre-login">
-      <form>
-        <div class="imgcontainer">
-          <img src="header.jpg" alt="Avatar" class="avatar">
-        </div>
+    <div class="pre-login" style="display:flex;justify-content:center;align-items:center;">
+      <form class="card-rounded login-screen" style="width:50%;">
+        <!-- <div class="imgcontainer card">
+          <img src="header.jpg" alt="Avatar" class="avatar card">
+        </div> -->
+        <h1>Reverse Cookbook</h1>
         <div class="container">
           <label><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <br>
+          <input type="text" placeholder="Enter Username" name="uname" class="card card-hover" required>
+          <br><br><br><br>
           <label><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
-          <input type="checkbox" checked="checked"> Remember me
-        </div>
-        <div class="container">
-          <button type="button" class="cancelbtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cancel</button>
-          <button class="psw mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Forgot Password?</button>
-        	<button onclick="location.href = 'index.html';" id="create" class="create mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Create an Account</button>
+          <br>
+          <input type="password" placeholder="Enter Password" name="psw" class="card card-hover" required>
+          <br><br><br>
+          <input type="checkbox" checked="checked">Remember me
+          <br><br><br>
+          <button type="submit" class="card card-hover mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--accent">Login</button>
+          <button class="card card-hover psw mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Forgot Password?</button>
+        	<button onclick="location.href = 'index.html';" id="create" class="card card-hover create mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Create an Account</button>
         </div>
       </form>
     </div>
@@ -58,7 +60,7 @@
 
     <div class="home-page">
       <h1>Reverse Cook Book</h1>
-      <br><br><br>
+      <br><br>
       <text>You are logged in!</text>
     </div>
 

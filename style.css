@@ -1,11 +1,23 @@
 body {
   margin: auto;
+  background-image: url("https://source.unsplash.com/category/food/1920x1080");
 }
 
 /* Bordered form */
 form {
-    border: 3px solid #f1f1f1;
-    margin: 0 128px 0 128px;
+    margin: 0 20% 0 20%;
+    background-color: transparent;
+    margin: auto;
+}
+
+h1{
+  text-align: center;
+}
+
+.login-screen {
+  align-items: center;
+  width: 600px;
+  height: 500px;
 }
 /* Center the avatar image inside this container */
 .imgcontainer {
@@ -21,9 +33,10 @@ img.avatar {
 
 
 input[type=text], input[type=password] {
-    width: 100%;
+    position: absolute;
+    width: 80%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: auto;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
@@ -38,6 +51,37 @@ button {
     cursor: pointer;
     float: left;
     width: 40%;
+}
+
+.card-rounded {
+  background: #fff;
+  border-radius: 72px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+}
+
+.card-hover {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-hover:focus {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  outline: none;
+}
+
+.card-hover:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .pre-login {
@@ -68,11 +112,4 @@ button {
     content: "";
     clear: both;
     display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-        width: 100%;
-    }
 }
