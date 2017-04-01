@@ -5,13 +5,17 @@ body {
 
 /* Bordered form */
 form {
-    margin: 0 20% 0 20%;
-    background-color: transparent;
-    margin: auto;
+  margin: 8px 8px 8px 8px;
+  background-color: transparent;
+  margin: auto;
 }
 
 h1{
   text-align: center;
+}
+
+label {
+  font-size: 16pt;
 }
 
 .login-screen {
@@ -34,23 +38,24 @@ img.avatar {
 
 input[type=text], input[type=password] {
     position: absolute;
-    width: 80%;
+    width: 90%;
     padding: 12px 20px;
-    margin: auto;
+    margin: 8px 8px 8px 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
 button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: rgb(224, 48, 191) !important;
+    color: white !important;
+    font-weight: bold;
     padding: 14px 20px;
-    margin: 8px 8px 8px 8px;
+    margin: 8px 8px 8px 8px !important;
     border: none;
     cursor: pointer;
-    float: left;
-    width: 40%;
+    float: right;
+    width: 200px !important;
 }
 
 .card-rounded {
@@ -62,7 +67,6 @@ button {
 }
 
 .card {
-  background: #fff;
   border-radius: 2px;
   display: inline-block;
   margin: 1rem;
@@ -75,8 +79,7 @@ button {
 }
 
 .card-hover:focus {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   outline: none;
 }
 

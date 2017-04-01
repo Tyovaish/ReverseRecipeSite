@@ -1,5 +1,5 @@
 <?php
-  echo "Connecting to database";
+  echo "PHP is running";
   $connection = oci_connect($username = 'keanu',
                             $password = 'h1llY3s!',
                             $connection_string = '//oracle.cise.ufl.edu/orcl');

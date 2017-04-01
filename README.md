@@ -1,7 +1,7 @@
 # ReverseCookBook
 
 ---Linux/UNIX Instructions---
-On UNIX and Linux, install apache2 and php and clone files in /var/www/html/reversecb
+On UNIX and Linux, install apache2, php, and oci. Clone files in /var/www/html/reversecb
 In browser, go to localhost/reversecb
 
 ---macOS Instructions---
