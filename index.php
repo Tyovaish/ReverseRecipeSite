@@ -16,9 +16,9 @@
             <div class="mdl-layout__header-row portfolio-logo-row">
                 <span class="mdl-layout__title">
                     <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title">Reverse Cookbook</span>
+                    <span class="mdl-layout__title" style="color: black; background-color: rgba(255, 255, 255, 0.7); height: 24px; width: 200px; margin: auto;">Reverse Cookbook</span>
                 </span>
-                <a id="login-button" class="mdl-button mdl-js-button mdl-js-ripple-effect";>LOGIN</a>
+                <a id="login-button" onclick="document.getElementById('login').style.display='block'" class="mdl-button mdl-js-button mdl-js-ripple-effect";>LOGIN</a>
             </div>
         </header>
     <main id="content"class="mdl-layout__content">
@@ -37,20 +37,22 @@
           </div>
         </div>
       </section>
-      <section id="login">
+      <section id="login" class="modal">
         <div class="page-content">
           <div class="pre-login" style="display:flex;justify-content:center;align-items:center;">
-            <form class="card-rounded login-screen" style="width:50%;">
-              <h3>Reverse Cookbook</h3>
+            <form class="card-back login-screen modal-content animate" style="width:50%;">
+              <br>
+              <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <h3>Login</h3>
               <div class="container">
                 <label><b>Username</b></label>
                 <br>
                 <input type="text" placeholder="Enter Username" name="uname" class="card card-hover" required>
-                <br><br><br>
+                <br><br>
                 <label><b>Password</b></label>
                 <br>
                 <input type="password" placeholder="Enter Password" name="psw" class="card card-hover" required>
-                <br><br><br>
+                <br>
                 <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rememberme">
                 <input type="checkbox" id="rememberme" class="mdl-checkbox__input" checked />
                 <span class="mdl-checkbox__label">Remember Me</span>
