@@ -22,11 +22,13 @@
         </div>
       </header>
     <main id="content"class="mdl-layout__content">
+      <br>
       <section id="home-page">
         <input id="add-ingredient" type="text" placeholder="Add Ingredients" class="card card-hover">
         <button id="add-ingredient-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
           <i class="material-icons">add</i>
         </button>
+        <br>
         <div class="page-content max-width mdl-grid" style="justify-content:center;">
           <div class="mdl-cell mdl-card mdl-shadow--4dp">
             <div class="mdl-card__title">
