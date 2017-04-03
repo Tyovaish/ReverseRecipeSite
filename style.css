@@ -27,26 +27,29 @@ label {
   height: 500px;
 }
 
+.modal-buttons {
+  background-color: rgb(224, 48, 191);
+  color: white;
+  font-weight: bold;
+  padding: 14px 20px;
+  margin: 8px 8px 8px 8px !important;
+  border: none;
+  cursor: pointer;
+  float: right;
+  width: 200px !important;
+}
+
 input {
     position: absolute;
-    width: 90%;
     padding: 12px 20px;
     margin: 8px 8px 8px 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: rgb(224, 48, 191);
-    color: white;
-    font-weight: bold;
-    padding: 14px 20px;
-    margin: 8px 8px 8px 8px !important;
-    border: none;
-    cursor: pointer;
-    float: right;
-    width: 200px !important;
+.max-width {
+  max-width: 1200px;
+  margin: auto;
 }
 
 .card-back {
@@ -76,6 +79,20 @@ button {
 
 .card-hover:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+li {
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+label {
+  margin: 0 32px 0 0;
+}
+
+#add-ingredient {
+  width: 50%;
+  margin: 16px auto 16px 300px;
 }
 
 #login-button {
@@ -194,7 +211,7 @@ button {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     padding-top: 60px;
     margin-top: 150px;
 }

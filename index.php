@@ -12,24 +12,36 @@
   </head>
   <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-            <div class="mdl-layout__header-row portfolio-logo-row">
-                <span class="mdl-layout__title">
-                    <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title" style="color: black; background-color: rgba(255, 255, 255, 0.7); height: 24px; width: 200px; margin: auto;">Reverse Cookbook</span>
-                </span>
-                <a id="login-button" onclick="document.getElementById('login').style.display='block'" class="mdl-button mdl-js-button mdl-js-ripple-effect";>LOGIN</a>
-            </div>
-        </header>
+      <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+        <div class="mdl-layout__header-row portfolio-logo-row">
+          <span class="mdl-layout__title">
+            <div class="portfolio-logo"></div>
+            <span class="mdl-layout__title" style="color: black; background-color: rgba(255, 255, 255, 0.7); height: 24px; width: 200px; margin: auto;">Reverse Cookbook</span>
+          </span>
+          <a id="login-button" onclick="document.getElementById('login').style.display='block'" class="mdl-button mdl-js-button mdl-js-ripple-effect";>LOGIN</a>
+        </div>
+      </header>
     <main id="content"class="mdl-layout__content">
       <section id="home-page">
-        <div class="page-content">
-          <div style="display:flex;justify-content:center;align-items:center;">
-            <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-              <h2>Reverse Cook Book</h2>
-              <br><br>
-              <text>Welcome</text>
-              <br><br>
+        <input id="add-ingredient" type="text" placeholder="Add Ingredients" class="card card-hover">
+        <button id="add-ingredient-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+          <i class="material-icons">add</i>
+        </button>
+        <div class="page-content max-width mdl-grid" style="justify-content:center;">
+          <div class="mdl-cell mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Your Ingredients</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <ul id='ingredient-list'>
+              </ul>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Recipes</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
               <?php
                 include 'oracle.php';
               ?>
@@ -57,11 +69,10 @@
                 <input type="checkbox" id="rememberme" class="mdl-checkbox__input" checked />
                 <span class="mdl-checkbox__label">Remember Me</span>
                 <br><br>
-                <button type="submit" class="card-hover mdl-button mdl-js-button mdl-js-ripple-effect";>LOGIN</button>
+                <button type="submit" class="modal-buttons card-hover mdl-button mdl-js-button mdl-js-ripple-effect";>LOGIN</button>
                 <div>
-                  <button class="card-hover psw mdl-button mdl-js-button mdl-button-accent mdl-js-ripple-effect">FORGOT PASSWORD</button>
-                	<button id="create" class="card card-hover create mdl-button mdl-js-button mdl-button--colored mdl-button-accent mdl-js-ripple-effect">CREATE ACCOUNT</button>
-                  <button id="login" onclick class="card-hover psw mdl-button mdl-js-button mdl-button-accent mdl-js-ripple-effect">LET ME IN</button>
+                  <button class="modal-buttons card-hover psw mdl-button mdl-js-button mdl-button-accent mdl-js-ripple-effect">FORGOT PASSWORD</button>
+                	<button id="create" class="modal-buttons card card-hover create mdl-button mdl-js-button mdl-button--colored mdl-button-accent mdl-js-ripple-effect">CREATE ACCOUNT</button>
                 </div>
               </div>
             </form>

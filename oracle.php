@@ -3,7 +3,7 @@
   $connection = oci_connect($username = 'keanu',
                             $password = 'h1llY3s!',
                             $connection_string = '//oracle.cise.ufl.edu/orcl');
-  $statement = oci_parse($connection, 'SELECT * FROM COUNTRY');
+  $statement = oci_parse($connection, 'SELECT * FROM customer');
   oci_execute($statement);
 
   while (($row = oci_fetch_object($statement))) {
