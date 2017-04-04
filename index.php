@@ -54,7 +54,18 @@
       <section id="login" class="modal">
         <div class="page-content">
           <div class="pre-login" style="display:flex;justify-content:center;align-items:center;">
-            <form class="card-back login-screen modal-content animate" style="width:50%;">
+            <!-- Output error message if any -->
+            <?php echo $error; ?>
+
+            <!-- form for login -->
+            <form method="post" action="index.php" class="card-back login-screen modal-content animate" style="width:50%;">
+                <label for="username">Username:</label><br/>
+                <input type="text" name="username" id="username"><br/>
+                <label for="password">Password:</label><br/>
+                <input type="password" name="password" id="password"><br/>
+                <input type="submit" value="Log In!">
+            </form>
+            <!-- <form class="card-back login-screen modal-content animate" style="width:50%;">
               <br>
               <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
               <h3>Login</h3>
@@ -77,7 +88,7 @@
                 	<button id="create" class="modal-buttons card card-hover create mdl-button mdl-js-button mdl-button--colored mdl-button-accent mdl-js-ripple-effect">CREATE ACCOUNT</button>
                 </div>
               </div>
-            </form>
+            </form> -->
           </div>
         </div>
       </section>
@@ -104,4 +115,35 @@
     </main>
     <script src="controller.js"></script>
   </body>
-<html>
+<!DOCTYPE HTML>
+
+<?php
+
+    // Start the session
+    session_start();
+
+    // Defines username and password. Retrieve however you like,
+    $username = "user";
+    $password = "password";
+
+    // Error message
+    $error = "";
+
+    // Checks to see if the user is already logged in. If so, refirect to correct page.
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+        $error = "success";
+        header('Location: success.php');
+    }
+
+    // Checks to see if the username and password have been entered.
+    // If so and are equal to the username and password defined above, log them in.
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        if ($_POST['username'] == $username && $_POST['password'] == $password) {
+            $_SESSION['loggedIn'] = true;
+            header('Location: success.php');
+        } else {
+            $_SESSION['loggedIn'] = false;
+            $error = "Invalid username and password!";
+        }
+    }
+?>
