@@ -31,4 +31,13 @@ $(document).ready(function() {
   });
 
   addIngredientButton.onclick = addIngredient;
+
+  $('button#add-ingredient-button').on('click', function() {
+    var ingredient = $('input#add-ingredient').val();
+    if($.trim(ingredient) != '') {
+      $.post('oracle.php', {ingredient: ingredient}, function(data) {
+        $('div#recipe-list').text(data);
+      });
+    }
+  });
 });

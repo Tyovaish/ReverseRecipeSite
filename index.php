@@ -43,10 +43,7 @@
             <div class="mdl-card__title">
               <h2 class="mdl-card__title-text">Recipes</h2>
             </div>
-            <div class="mdl-card__supporting-text">
-              <?php
-                include 'oracle.php';
-              ?>
+            <div id="recipe-list" class="mdl-card__supporting-text">
             </div>
           </div>
         </div>
