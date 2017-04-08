@@ -16,20 +16,24 @@
   // echo $content[0];
 
   // echo $_POST['ingredient'];
-  $search = '%' . $_POST['ingredient'] . '%';
-  echo $search;
-
-
+  $ingredientToAdd = $_POST['ingredient'];
+  $customerName='tyovaish'
+	
   if(isset($_POST['ingredient']) === true && empty($_POST['ingredient']) === false) {
     $connection = oci_connect($username = 'keanu',
                               $password = 'h1llY3s!',
                               $connection_string = '//oracle.cise.ufl.edu/orcl');
     // $statement = oci_parse($connection, 'SELECT * FROM RECIPE');
-    $statement = oci_parse($connection, 'SELECT RECIPE_NAME, DIRECTIONS FROM RECIPE WHERE UPPER(RECIPE_NAME) LIKE UPPER(:bv_ingredient)');
+    $addIngredient=oci_parse($connection,'INSERT INTO CUSTOMER_OWNS(INGREDIENTNAME,ACCOUNTNAME,INGREDIENTAMOUNTOWNED) VALUES(:bv_ingredient,:bv_customerName,5)');
+    $possibleRecipes= oci_parse($connection, '(SELECT RECIPE_CONSISTS_OF.RECIPE_NAME as recipe_Name, COUNT(*) FROM RECIPE_CONSISTS_OF GROUP BY recipe_Name) INTERSECT (SELECT RECIPE_CONSISTS_OF.RECIPE_NAME as recipe_Name, COUNT(*) FROM RECIPE_CONSISTS_OF JOIN CUSTOMER_OWNS on RECIPE_CONSISTS_OF.INGREDIENTNAME=CUSTOMER_OWNS.INGREDIENTNAME GROUP BY RECIPE_CONSISTS_OF.RECIPE_NAME)');
+    oci_bind_by_name($possibleRecipe, ":bv_ingredient", $ingredientToAdd);
+    oci_bind_by_name($addIngredient, ":bv_ingredient", $ingredientToAdd);
+     oci_bind_by_name($possibleRecipe, ":bv_customer", $customerName);
+    oci_bind_by_name($addIngredient, ":bv_customer", $customerName);
+ 
+    oci_execute($addIngredient);
+    oci_execute($possibleRecipes);
 
-    oci_bind_by_name($statement, ":bv_ingredient", $search);
-
-    oci_execute($statement);
 
     while (($row = oci_fetch_object($statement))) {
         var_dump($row);
