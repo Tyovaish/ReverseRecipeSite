@@ -27,7 +27,12 @@ $(document).ready(function() {
   }
 
   $(document).on('click', '.delete', function() {
-        $(this).parent().remove();
+    $(this).parent().remove();
+    var remove = $(this).parent().val();
+    console.log(remove);
+    // $.post('oracle.php', {remove: remove}, function(data) {
+    //   $('div#recipe-list').text(data);
+    // });
   });
 
   addIngredientButton.onclick = addIngredient;
