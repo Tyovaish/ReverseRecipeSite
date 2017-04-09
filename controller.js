@@ -27,12 +27,11 @@ $(document).ready(function() {
   }
 
   $(document).on('click', '.delete', function() {
-    $(this).parent().remove();
-    var remove = $(this).parent().val();
+    var remove = $(this).parent().find('label').text();
     console.log(remove);
-    // $.post('oracle.php', {remove: remove}, function(data) {
-    //   $('div#recipe-list').text(data);
-    // });
+    $(this).parent().remove();
+    $.post('remove_ingredient.php', {remove: remove}, function(data) {
+      $('div#recipe-list').text(data);
   });
 
   addIngredientButton.onclick = addIngredient;
@@ -40,7 +39,7 @@ $(document).ready(function() {
   $('button#add-ingredient-button').on('click', function() {
     var ingredient = $('input#add-ingredient').val();
     if($.trim(ingredient) != '') {
-      $.post('oracle.php', {ingredient: ingredient}, function(data) {
+      $.post('add-ingredient.php', {ingredient: ingredient}, function(data) {
         $('div#recipe-list').text(data);
       });
     }
