@@ -1,22 +1,5 @@
 <?php
-  echo "PHP is running      ";
-
-  // $content = [];
-  // $doc = new DOMDocument();
-  // $doc->loadHTMLFile("index.php");
-  // $items = $doc->getElementsByTagName('li');
-  // if(count($items) > 0) {
-  //   foreach ($items as $li) {
-  //     $content[] .= $li->nodeValue;
-  //   }
-  // }
-  // else {
-  //   $content[] = $doc->saveHTML();
-  // }
-  // echo $content[0];
-
-  // echo $_POST['ingredient'];
-  $ingredientToAdd = $_POST['ingredient'];
+  $ingredientToAdd = $_POST['recipe'];
   $customerName='tyovaish';
 
   if(isset($_POST['ingredient']) === true && empty($_POST['ingredient']) === false) {
@@ -46,7 +29,7 @@
     oci_execute($customerOwns);
 
     while (($row = oci_fetch_object($customerOwns))) {
-        var_dump($row);
+        echo $row->INGREDIENTNAME;
     }
   }
 

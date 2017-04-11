@@ -2,8 +2,6 @@ while (!window.jQuery)
   sleep(10);
 
 $(document).ready(function() {
-  console.log("JS is running");
-
   //Login modal
   var modal = document.getElementById('login');
 
@@ -18,28 +16,41 @@ $(document).ready(function() {
   var addIngredientButton = document.getElementById('add-ingredient-button');
   var ingredientList = document.getElementById('ingredient-list');
 
-  var addIngredient = function () {
-      var text = ingredientInput.value;
-      var li = document.createElement('li');
-      li.innerHTML = "<label>" + text + "</label>" +
-                     "<button class='delete mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect'>" + "<i class='material-icons'>" + 'delete' + "</i>" + "</button>";
-      ingredientList.appendChild(li);
+  var addIngredient = function (newIngredient) {
+    // var newIngredient = ingredientInput.value;
+    var li = document.createElement('li');
+    console.log("New ingredient:" + newIngredient);
+    console.log("Ingredient input: " + ingredientInput.value);
+    li.innerHTML = "<label>" + newIngredient + "</label>" +
+                   "<button class='delete mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect'>" + "<i class='material-icons'>" + 'delete' + "</i>" + "</button>";
+    ingredientList.appendChild(li);
   }
+
+  $(document).ready(function() {
+    $.get('get_my_ingredients.php', function(data) {
+      data = data.replace(/,\s*$/, "");
+      var my_ingredients = data.split(',');
+      console.log(my_ingredients);
+      for(i in my_ingredients){
+        addIngredient(my_ingredients[i]);
+      }
+    });
+  });
 
   $(document).on('click', '.delete', function() {
     var remove = $(this).parent().find('label').text();
     console.log(remove);
     $(this).parent().remove();
     $.post('remove_ingredient.php', {remove: remove}, function(data) {
-      $('div#recipe-list').text(data);
+      console.log(data);
+    });
   });
 
-  addIngredientButton.onclick = addIngredient;
-
   $('button#add-ingredient-button').on('click', function() {
-    var ingredient = $('input#add-ingredient').val();
-    if($.trim(ingredient) != '') {
-      $.post('add-ingredient.php', {ingredient: ingredient}, function(data) {
+    var recipe = $('input#add-ingredient').val();
+    addIngredient(recipe);
+    if($.trim(recipe) != '') {
+      $.post('add_ingredient.php', {recipe: recipe}, function(data) {
         $('div#recipe-list').text(data);
       });
     }
