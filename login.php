@@ -1,53 +1,27 @@
-<!DOCTYPE HTML>
-
 <?php
+  $customerUsername=$_POST['username']; // Fetching Values from URL.
+  $customerPassword= $_POST['password']; // Password Encryption, If you like you can also leave sha1.
 
-    // Start the session
-    session_start();
+  $connection = oci_connect($username = 'keanu',
+                            $password = 'h1llY3s!',
+                            $connection_string = '//oracle.cise.ufl.edu/orcl');
 
-    // Defines username and password. Retrieve however you like,
-    $username = "user";
-    $password = "password";
-
-    // Error message
-    $error = "";
-
-    // Checks to see if the user is already logged in. If so, refirect to correct page.
-    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-        $error = "success";
-        header('Location: success.php');
-    }
-
-    // Checks to see if the username and password have been entered.
-    // If so and are equal to the username and password defined above, log them in.
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        if ($_POST['username'] == $username && $_POST['password'] == $password) {
-            $_SESSION['loggedIn'] = true;
-            $_SESSION['username']=$username;
-            header('Location: success.php');
-        } else {
-            $_SESSION['loggedIn'] = false;
-            $error = "Invalid username and password!";
-        }
-    }
+  // echo $customerUsername;
+  $login=oci_parse($connection,'SELECT * FROM CUSTOMER WHERE ACCOUNTNAME=:bv_uname');
+  oci_bind_by_name($login,':bv_uname',$customerUsername);
+  oci_execute($login);
+  $row=oci_fetch_object($login);
+  if($row->PASSWORD==$customerPassword) {
+      echo 'SUCCESS!';
+  }
+  else {
+    $newUser=oci_parse($connection,'INSERT INTO CUSTOMER(ACCOUNTNAME,PASSWORD) VALUES (:bv_uname,:bv_password)');
+    oci_bind_by_name($newUser,':bv_uname', $customerUsername);
+    oci_bind_by_name($newUser,':bv_password', $customerPassword);
+    oci_execute($newUser);
+    echo 'Added New User!';
+  }
+  oci_free_statement($login);
+  oci_free_statement($newUser);
+  oci_close($connection);
 ?>
-
-<html>
-    <head>
-        <title>Login Page</title>
-    </head>
-
-    <body>
-        <!-- Output error message if any -->
-        <?php echo $error; ?>
-
-        <!-- form for login -->
-        <form method="post" action="index.php">
-            <label for="username">Username:</label><br/>
-            <input type="text" name="username" id="username"><br/>
-            <label for="password">Password:</label><br/>
-            <input type="password" name="password" id="password"><br/>
-            <input type="submit" value="Log In!">
-        </form>
-    </body>
-</html>
