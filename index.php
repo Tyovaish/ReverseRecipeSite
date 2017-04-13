@@ -27,10 +27,10 @@
         <div class="mdl-tabs__tab-bar" style="color: black; background-color: rgba(255, 255, 255, 0.7);">
           <a class="mdl-tabs__tab" href="#fav-tab">Favorites</a>
           <a class="mdl-tabs__tab is-active" href="#home-tab">Home</a>
-          <a class="mdl-tabs__tab" href="#stats-tab">Fun Facts</a>
+          <a class="mdl-tabs__tab" href="#stats-tab">Combinations</a>
         </div>
-        <div class="mdl-tabs__panel is-active" id="home-tab">
-          <section id="home-page">
+        <div class="mdl-tabs__panel is-active" id="home-tab" style="justify-content:center;">
+          <section id="home-page" style="justify-content:center;">
             <input id="add-ingredient" type="text" placeholder="Add Ingredients" class="card card-hover">
             <button id="add-ingredient-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
               <i class="material-icons">add</i>
@@ -59,15 +59,57 @@
         <div id="fav-tab" class="mdl-tabs__panel">
           <section>
             <div>
-              <h2>Favorites</h2>
+              <div class="page-content max-width mdl-grid" style="justify-content:center;">
+                <div class="mdl-cell mdl-card mdl-shadow--4dp">
+                  <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Favorites</h2>
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    <ul id='fav-list'>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </div>
         <div id="stats-tab" class="mdl-tabs__panel">
-          <section>
-            <div>
-              <h2>Fun Facts</h2>
+          <section style="justify-content: center;">
+            <div class="page-content max-width mdl-grid" style="justify-content:center;">
+              <div class="mdl-cell mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Combinations</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <p style="font-weight: bold">Would the following ingredients work well together?</p>
+                  <br>
+                  <p id="ingredient1"></p>
+                  <p id="ingredient2"></p>
+                  <br>
+                  <button id="combo-yes">YES</button>
+                  <button id="combo-no">NO</button>
+                </div>
+              </div>
+              <div class="mdl-cell mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Top Combinations</h2>
+                </div>
+                <div id="top-connection-list" class="mdl-card__supporting-text">
+                  <ul id='top-connections'>
+                  </ul>
+                </div>
             </div>
+            <div class="mdl-cell mdl-card mdl-shadow--4dp">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Worst Combinations</h2>
+              </div>
+              <div id="worst-connection-list" class="mdl-card__supporting-text">
+                <ul id='worst-connections'>
+                </ul>
+              </div>
+            </div>
+          </div>
+          </div>
           </section>
         </div>
         <div id="login-screen">

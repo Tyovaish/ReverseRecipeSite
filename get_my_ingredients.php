@@ -9,7 +9,6 @@
 
   oci_bind_by_name($getUserIngredients,':bv_customerName',$customerName);
   oci_execute($getUserIngredients);
-  $row=oci_fetch_object($getUserIngredients);
   while (($row = oci_fetch_object($getUserIngredients))) {
       echo $row->INGREDIENTNAME . "|";
   }

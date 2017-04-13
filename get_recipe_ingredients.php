@@ -5,7 +5,7 @@
                               $password = 'h1llY3s!',
                               $connection_string = '//oracle.cise.ufl.edu/orcl');
 
-    $possibleRecipes= oci_parse($connection, 'SELECT INGREDIENTNAME FROM RECIPE_CONSISTS_OF WHERE RECIPE_NAME=:bv_recipeName ORDER BY INGREDIENTNAME');
+    $possibleRecipes= oci_parse($connection, 'SELECT INGREDIENTNAME FROM RECIPE_CONSISTS_OF WHERE RECIPE_NAME=:bv_recipeName');
 
     oci_bind_by_name($possibleRecipes, ":bv_recipeName", $recipeName);
 
@@ -13,7 +13,6 @@
 
 $row = oci_fetch_object($possibleRecipes);
     while ($row) {
-
           echo $row->INGREDIENTNAME.'|';
           $row=oci_fetch_object($possibleRecipes);
   }

@@ -1,5 +1,4 @@
 <?php
-  echo "PHP is running      ";
 
   // $content = [];
   // $doc = new DOMDocument();
@@ -16,8 +15,8 @@
   // echo $content[0];
 
   // echo $_POST['ingredient'];
-  $recipeToFavoriteName= $_POST['ingredient'];
-  $customerName='tyovaish';
+  $recipeToFavoriteName= $_POST['recipe'];
+  $customerName= $_POST['username'];
 
 
     $connection = oci_connect($username = 'keanu',
@@ -25,19 +24,17 @@
                               $connection_string = '//oracle.cise.ufl.edu/orcl');
 
     $addRecipeToFavorite=oci_parse($connection,'INSERT INTO CUSTOMER_FAVORITES(ACCOUNTNAME,RECIPE_NAME) VALUES (:bv_customerName,:bv_recipeToFavoriteName)');
-   
-    oci_bind_by_name($adddRecipeToFavorite, ":bv_recipeToFavoriteName", $recipeToFavoriteName);
-    oci_bind_by_name($adddRecipeToFavorite, ":bv_customerName", $customerName);
+
+    oci_bind_by_name($addRecipeToFavorite, ":bv_recipeToFavoriteName", $recipeToFavoriteName);
+    oci_bind_by_name($addRecipeToFavorite, ":bv_customerName", $customerName);
 
     oci_execute($addRecipeToFavorite);
 
-    while (($row = oci_fetch_object($addRecipeToFavorite))) {
-        var_dump($row);
-    }
+    echo $recipeToFavoriteName;
 
   //
   // VERY important to close Oracle Database Connections and free statements!
   //
-  oci_free_statement($statement);
+  oci_free_statement($addRecipeToFavorite);
   oci_close($connection);
 ?>
