@@ -1,6 +1,6 @@
 <?php
   $rm_ingredient = $_POST['remove'];
-  $customerName='tyovaish';
+  $customerName = $_POST['username'];
 
   $connection = oci_connect($username = 'keanu',
                             $password = 'h1llY3s!',

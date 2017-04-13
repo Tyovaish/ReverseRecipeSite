@@ -45,16 +45,14 @@
                   <ul id='ingredient-list'>
                   </ul>
                 </div>
+                <button onclick="document.getElementById('create').style.display='block'">Create Recipe</button>
               </div>
               <div class="mdl-cell mdl-card mdl-shadow--4dp">
                 <div class="mdl-card__title">
                   <h2 class="mdl-card__title-text">Recipes</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
-                  <ul id='recipe-list'>
-                  </ul>
+                <div id="recipe-list" class="mdl-card__supporting-text">
                 </div>
-              </div>
             </div>
           </section>
         </div>
@@ -76,43 +74,49 @@
           <section id="login" class="modal">
             <div class="page-content">
               <div class="pre-login" style="display:flex;justify-content:center;align-items:center;">
-
                 <div class="container card-back login-screen modal-content animate" style="width:50%;">
                   <div class="main">
                     <form class="form" method="post" action="#">
                       <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
                       <h2>Login</h2>
                       <label>Username :</label>
+                      <br>
                       <input type="text" name="username" id="username">
+                      <br><br><br><br>
                       <label>Password :</label>
+                      <br>
                       <input type="password" name="password" id="password">
+                      <br><br><br>
                       <input type="button" name="login" id="login" value="Login">
                     </form>
-                    <button id="get-account-info">Get Account Info</button>
-
                   </div>
                 </div>
               </div>
             </div>
           </section>
-          <section id="create-account">
-            <div>
-              <form>
-                <div class="container">
-                  <label><b>Email</b></label>
-                  <input type="text" placeholder="Enter Email" name="email" required>
-                  <label><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" required>
-                  <label><b>Repeat Password</b></label>
-                  <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                  <input type="checkbox" checked="checked"> Remember me
-                  <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                  <div>
-                    <button type="button"  class="cancelbtn">Cancel</button>
-                    <button type="submit" class="signupbtn">Sign Up</button>
+        </div>
+        <div id="create-recipe">
+          <section id="create" class="modal">
+            <div class="page-content">
+              <div class="pre-login" style="display:flex;justify-content:center;align-items:center;">
+                <div class="container card-back login-screen modal-content animate" style="width:50%;">
+                  <div class="main">
+                    <form class="form" method="post" action="#">
+                      <span onclick="document.getElementById('create').style.display='none'" class="close" title="Close Modal">&times;</span>
+                      <h2>Create New Recipe</h2>
+                      <label>Name</label>
+                      <br>
+                      <input type="text" name="name" id="create-name">
+                      <br><br><br><br>
+                      <label>Description</label>
+                      <br>
+                      <input type="text" name="description" id="create-description">
+                      <br><br><br>
+                      <input type="button" name="create" id="create-button" value="create">
+                    </form>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </section>
         </div>
