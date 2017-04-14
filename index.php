@@ -45,7 +45,7 @@
                   <ul id='ingredient-list'>
                   </ul>
                 </div>
-                <button onclick="document.getElementById('create').style.display='block'">Create Recipe</button>
+                <button onclick="document.getElementById('create').style.display='block'" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Create Recipe</button>
               </div>
               <div class="mdl-cell mdl-card mdl-shadow--4dp">
                 <div class="mdl-card__title">
@@ -68,6 +68,16 @@
                     <ul id='fav-list'>
                     </ul>
                   </div>
+                  <button id="clear-favs" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Clear Favorites</button>
+                </div>
+                <div class="mdl-cell mdl-card mdl-shadow--4dp">
+                  <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Most Contributed</h2>
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    <ul id='most-contributed'>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -86,8 +96,8 @@
                   <p id="ingredient1"></p>
                   <p id="ingredient2"></p>
                   <br>
-                  <button id="combo-yes">YES</button>
-                  <button id="combo-no">NO</button>
+                  <button id="combo-yes" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">YES</button>
+                  <button id="combo-no" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">NO</button>
                 </div>
               </div>
               <div class="mdl-cell mdl-card mdl-shadow--4dp">
@@ -123,13 +133,13 @@
                       <h2>Login</h2>
                       <label>Username :</label>
                       <br>
-                      <input type="text" name="username" id="username">
-                      <br><br><br><br>
+                      <input type="text" name="username" id="username" class="card card-hover" style="width: 95%;">
+                      <br><br>
                       <label>Password :</label>
                       <br>
-                      <input type="password" name="password" id="password">
-                      <br><br><br>
-                      <input type="button" name="login" id="login" value="Login">
+                      <input type="password" name="password" id="password" class="card card-hover" style="width: 95%;">
+                      <br>
+                      <input type="button" name="login" id="login" value="Login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                     </form>
                   </div>
                 </div>
@@ -148,13 +158,13 @@
                       <h2>Create New Recipe</h2>
                       <label>Name</label>
                       <br>
-                      <input type="text" name="name" id="create-name">
-                      <br><br><br><br>
+                      <input type="text" name="name" id="create-name" class="card card-hover" style="width: 95%;">
+                      <br><br>
                       <label>Description</label>
                       <br>
-                      <input type="text" name="description" id="create-description">
-                      <br><br><br>
-                      <input type="button" name="create" id="create-button" value="create">
+                      <input type="text" name="description" id="create-description" class="card card-hover" style="width: 95%;">
+                      <br>
+                      <input type="button" name="create" id="create-button" value="create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                     </form>
                   </div>
                 </div>

@@ -10,22 +10,23 @@
                             $password = 'h1llY3s!',
                             $connection_string = '//oracle.cise.ufl.edu/orcl');
 
-                            $decreaseConnection=oci_parse($connection,"UPDATE INGREDIENT_CONNECTIONS SET NUMBEROFCONNECTIONS=NUMBEROFCONNECTIONS-1 WHERE INGREDIENT1_NAME=:bv_ingredient1 AND INGREDIENT2_NAME=:bv_ingredient2");
+                            $decreaseConnection=oci_parse($connection,"UPDATE INGREDIENT_CONNECTIONS SET NUMBEROFCONNECTIONS=NUMBEROFCONNECTIONS-1 WHERE INGREDIENT1_NAME LIKE ('%',:bv_ingredient1,'%') AND INGREDIENT2_NAME LIKE ('%',:bv_ingredient2,'%')");
 
 
   oci_bind_by_name($decreaseConnection, ":bv_ingredient1",$ingredient1);
   oci_bind_by_name($decreaseConnection, ":bv_ingredient2",$ingredient2);
   oci_execute($decreaseConnection);
 oci_free_statement($decreaseConnection);
-      $decreaseConnection=oci_parse($connection,"UPDATE INGREDIENT_CONNECTIONS SET NUMBEROFCONNECTIONS=NUMBEROFCONNECTIONS-1 WHERE INGREDIENT1_NAME=:bv_ingredient1 AND INGREDIENT2_NAME=:bv_ingredient2");
+      $decreaseConnection2=oci_parse($connection,"UPDATE INGREDIENT_CONNECTIONS SET NUMBEROFCONNECTIONS=NUMBEROFCONNECTIONS-1 WHERE INGREDIENT1_NAME LIKE ('%',:bv_ingredient2,'%') AND INGREDIENT2_NAME LIKE ('%',:bv_ingredient1,'%')");
 
-    oci_bind_by_name($decreaseConnection, ":bv_ingredient1",$ingredient2);
-      oci_bind_by_name($decreaseConnection, ":bv_ingredient2",$ingredient1);
-      oci_execute($decreaseConnection);
+    oci_bind_by_name($decreaseConnection2, ":bv_ingredient1",$ingredient1);
+      oci_bind_by_name($decreaseConnection2, ":bv_ingredient2",$ingredient2);
+      oci_execute($decreaseConnection2);
 
 //
 // VERY important to close Oracle Database Connections and free statements!
 //
 oci_free_statement($decreaseConnection);
+oci_free_statement($decreaseConnection2);
 oci_close($connection);
 ?>

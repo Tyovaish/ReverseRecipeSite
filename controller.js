@@ -10,6 +10,7 @@ $(document).ready(function() {
   var ingredientList = document.getElementById('ingredient-list');
   var recipeList = document.getElementById('recipe-list');
   var favList = document.getElementById('fav-list');
+  var contributeList = document.getElementById('most-contributed');
   var topList = document.getElementById('top-connections');
   var worstList = document.getElementById('worst-connections');
   var acc = document.getElementsByClassName("accordion");
@@ -32,33 +33,41 @@ $(document).ready(function() {
   });
 
   var getTopConnections = function() {
+    $("#top-connections").empty();
     $.post('get_top_connections.php', function(data) {
       console.log(data);
       data = data.replace(/,\s*$/, "");
       var top = data.split('|');
       for(i in top) {
-        var li = document.createElement('li');
-        li.innerHTML = "<label>" + top[i] + "</label>";
-        topList.appendChild(li);
+        if(top[i]) {
+          var li = document.createElement('li');
+          li.innerHTML = "<label>" + top[i] + "</label>";
+          // console.log("Top: " + top[i]);
+          topList.appendChild(li);
+        }
       }
     });
   }
 
   var getWorstConnections = function() {
+    $("#worst-connections").empty();
     $.post('get_worst_connections.php', function(data) {
       console.log(data);
       data = data.replace(/,\s*$/, "");
       var worst = data.split('|');
       for(i in worst) {
-        var li = document.createElement('li');
-        li.innerHTML = "<label>" + worst[i] + "</label>";
-        worstList.appendChild(li);
+        if(worst[i]){
+          var li = document.createElement('li');
+          li.innerHTML = "<label>" + worst[i] + "</label>";
+          worstList.appendChild(li);
+          // console.log("Worst: " + worst[i]);
+        }
       }
     });
   }
 
-  getTopConnections();
-  getWorstConnections();
+  // getTopConnections();
+  // getWorstConnections();
 
   $('#create-button').click(function() {
     var recipeName = $('#create-name').val();
@@ -77,17 +86,25 @@ $(document).ready(function() {
     ingredientList.appendChild(li);
   }
 
+  $("#clear-favs").click(function() {
+    $("#fav-list").empty();
+    $.post("clear_favs.php", {username: username}, function(data) {
+      console.log("Cleared favorites");
+    });
+  });
+
   //Adds recipes to recipe list in HTML
   var addRecipe = function (newRecipe, recipeInfo) {
     if(newRecipe) {
       var li = document.createElement('div');
-      li.innerHTML = "<button id=" + newRecipe + " class='accordion'>" + newRecipe + "</button>" + "<div class='panel'>" + "<p>" + recipeInfo + "</p>" + "<button class='favorite' value='" + newRecipe + "'>" + "Favorite" + "</button>" + "<br>" + "</div>";
+      li.innerHTML = "<button id=" + newRecipe + " class='accordion'>" + newRecipe + "</button>" + "<div class='panel'>" + "<p>" + recipeInfo + "</p>" + "<button class='favorite mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' value='" + newRecipe + "'>" + "Favorite" + "</button>" + "<br>" + "</div>";
       console.log("New Recipe: " + newRecipe);
       recipeList.appendChild(li);
     }
   }
 
   var getFavs = function() {
+    $("#favList").empty();
     var li = document.createElement('li');
     $.post("refresh_favorites.php", {username: username}, function(favs) {
       console.log(favs);
@@ -117,8 +134,10 @@ $(document).ready(function() {
       data = data.replace(/,\s*$/, "");
       var my_ingredients = data.split('|');
       for(i in my_ingredients) {
+        if(my_ingredients[i]) {
         //Adds ingredients to list in HTML
         addIngredient(my_ingredients[i]);
+        }
       }
     });
   }
@@ -177,31 +196,54 @@ $(document).ready(function() {
     });
   });
 
+  var getMostContributed = function() {
+    console.log("Searching for contributions");
+    $.post('findMostContributed.php', function(data) {
+      console.log("MOST CONTRIBUTED: " + data);
+      data = data.replace(/,\s*$/, "");
+      var contributions = data.split('|');
+      for(i in contributions) {
+        if(contributions[i]) {
+          //Adds ingredients to list in HTML
+          var li = document.createElement('li');
+          li.innerHTML = "<label>" + contributions[i] + "</label>";
+          contributeList.appendChild(li);
+        }
+      }
+    });
+  }
+
+  getMostContributed();
+
   var firstCombo = [];
 
   var refreshCombos = function() {
     $.post('ingredient_connection.php', function(combo) {
         combo = combo.replace(/,\s*$/, "");
         firstCombo = combo.split('|');
-        console.log(firstCombo[0]);
-        console.log(firstCombo[1]);
         $('#ingredient1').append(firstCombo[0]);
         $('#ingredient2').append(firstCombo[1]);
+        getTopConnections();
+        getWorstConnections();
     });
   }
 
   refreshCombos();
 
   $("#combo-yes").click(function() {
+    $("#ingredient1").empty();
+    $("#ingredient2").empty();
     $.post('positive_connections.php', {ingredient1: firstCombo[0], ingredient2: firstCombo[1]}, function(data) {
-      console.log("Fucking data: " + data);
+      // console.log("Fucking data: " + data);
     });
     refreshCombos();
   });
 
   $("#combo-no").click(function() {
+    $("#ingredient1").empty();
+    $("#ingredient2").empty();
     $.post('negative_connections.php', {ingredient1: firstCombo[0], ingredient2: firstCombo[1]}, function(data) {
-      console.log("Kill me: " + data);
+      // console.log("Kill me: " + data);
     });
     refreshCombos();
   });
